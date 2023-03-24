@@ -15,6 +15,14 @@ for post in posts:
 def get_all_posts():
     return render_template("index.html", posts=all_posts)
 
+@app.route("/posts/<int:num>")
+def get_post(num):
+    blogpost = None
+    for post in all_posts:
+        if post.id == num:
+            blogpost = post
+    return render_template("post.html", post=blogpost)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
